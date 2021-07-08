@@ -3,13 +3,16 @@ const baseURL = "http://localhost:3000/pups"
 // DOM Selectors
 const bar = document.querySelector("#dog-bar")
 const details = document.querySelector("#dog-info")
-const filterBtn = document.querySelector("good-dog-filter")
+const filterBtn = document.querySelector("#good-dog-filter")
+
+// register listeners
+filterBtn.addEventListener('click', toggleFilter)
 
 // Fetches
 function getAllDogs(){
-  fetch(baseURL)
+  return fetch(baseURL)
   .then(res => res.json())
-  .then(renderAllInBar)
+  // .then(renderAllInBar)
 }
 
 function getOneDog(id){
@@ -18,9 +21,13 @@ function getOneDog(id){
 }
 
 // Rendering
-function renderAllInBar(dogsArr){
+function renderAllInBar(dogsArr, filter = false){
   bar.innerHTML = ''
-  dogsArr.forEach(addOneDogToBar)
+  if (filter){
+    dogsArr.filter(dogObj => dogObj.isGoodDog).forEach(addOneDogToBar)
+  } else {
+    dogsArr.forEach(addOneDogToBar)
+  }
 }
 
 function addOneDogToBar(dogObj){
@@ -60,5 +67,17 @@ function togglePupButton(pupButton){
  pupButton.textContent = pupButton.textContent.includes("Good") ? "Bad Dog" : "Good Dog"
 }
 
+function toggleFilter(){
+  if (filterBtn.innerText.includes("OFF")){
+    filterBtn.innerText = "Filter good dogs: ON"
+    // renderAllInBar(goodDogsArr)
+    getAllDogs().then(dogArr => renderAllInBar(dogArr, true))
+  } else {
+    filterBtn.innerText = "Filter good dogs: OFF"
+    // renderAllInBar(allDogsArr)
+    getAllDogs().then(renderAllInBar)
+  }
+}
+
 // Intialize
-getAllDogs()
+getAllDogs().then(renderAllInBar)

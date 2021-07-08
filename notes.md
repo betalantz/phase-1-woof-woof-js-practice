@@ -2,7 +2,7 @@
 1. [x] Fetch all dog data
 2. [x] Display all dog name in bar in spans
 3. [x] Clicking dog span displays dog details (see below)
-4. Clicking button on detail toggles "Good/Bad Dog"
+4. [x] Clicking button on detail toggles "Good/Bad Dog"
 ### Bonus
 5. Clicking on "Filter" button displays only good dogs in bar
 
