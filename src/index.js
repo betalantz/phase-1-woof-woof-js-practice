@@ -32,7 +32,13 @@ function addOneDogToBar(dogObj){
 }
 
 function showOneDog(dogObj){
-  console.log(dogObj)
+  // console.log(dogObj)
+  details.innerHTML = ''
+  const dogDiv = document.createElement('div')
+  dogDiv.innerHTML = `
+    <img src=${dogObj.image}>
+    <h2>${dogObj.name}</h2>`
+  details.append(dogDiv)
 }
 
 // Event handlers
