@@ -49,8 +49,7 @@ When you have the pup's information, the dog info `div` should have the followin
  
   - The button's text should change from Good to Bad or Bad to Good
   - The corresponding pup object in the database should be updated to reflect the new isGoodDog value
-    - Please note, you can update a dog by making a PATCH request to `/pups/:id`
-
+  
 ### BONUS! STEP 5: FILTER GOOD DOGS 
 When a user clicks on the Filter Good Dogs button, two things should happen:
 
